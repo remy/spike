@@ -1,0 +1,17 @@
+{
+  "author": "",
+  "name": "spike",
+  "main": "server",
+  "version": "0.0.0",
+  "repository": {
+    "url": ""
+  },
+  "dependencies": {
+    "connect": "1.x.x"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Spike</title>
+</head>
+<body>
+  <p>Hello world</p>
+<script>
+function allowDrop(holder) {
+  holder.ondragover = function () { 
+    return false; 
+  };
+
+  holder.ondragend = function () { 
+    return false; 
+  };
+
+  holder.ondrop = function (e) {
+    e.preventDefault();
+
+    var file = e.dataTransfer.files[0],
+        reader = new FileReader();
+    reader.onload = function (event) {
+      // put JS in the JavaScript panel
+      try {
+        // now kick off - basically just doing a copy and paste job from @wookiehangover - thanks man! :)
+        var worker = new Worker('worker.js');
+
+        // pass the worker the file object
+        worker.postMessage(file);
+
+        // bind onmessage handler
+        worker.onmessage = function (event) {
+          // send spike
+        };
+      } catch (e) {
+        // fail on the awesomeness...oh well
+      }
+    };
+
+    reader.readAsText(file);
+
+    return false;
+  };
+}
+
+// test for dnd and file api first
+allowDrop(document.body);
+
+</script>
+</body>
+</html>
